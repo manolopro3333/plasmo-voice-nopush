@@ -98,8 +98,15 @@ public final class VoiceClientActivation
         this.configDistance = activationDistance;
         this.configType = activationConfig.getConfigType();
         this.configToggle = activationConfig.getConfigToggle();
-        if (configType.value() == Type.PUSH_TO_TALK) configType.set(Type.VOICE);
-        if (configToggle.value()) configToggle.set(false);
+        if (isProximityActivation()) {
+            // Canelosos Voice: la voz de proximidad siempre esta prendida
+            if (configType.value() != Type.VOICE) configType.set(Type.VOICE);
+            if (configToggle.value()) configToggle.set(false);
+        } else if (configType.value() == Type.VOICE) {
+            // Repara configs de la version anterior, que puso los addons en VOICE
+            // y le robaban el audio a la proximidad
+            configType.set(Type.PUSH_TO_TALK);
+        }
 
         this.pttKey = createHotKey(hotKeys, activation, "ptt", true);
         this.toggleKey = createHotKey(hotKeys, activation, "toggle", false);
@@ -136,9 +143,14 @@ public final class VoiceClientActivation
 
     @Override
     public @NotNull Type getType() {
-        // Canelosos Voice: no existe Push-to-Talk, siempre activacion por voz
-        Type type = configType.value();
-        return type == Type.PUSH_TO_TALK ? Type.VOICE : type;
+        // Canelosos Voice: la voz de proximidad siempre transmite.
+        // Las activaciones de addons conservan su tipo para no robarle el audio a la proximidad.
+        if (isProximityActivation()) return Type.VOICE;
+        return configType.value();
+    }
+
+    private boolean isProximityActivation() {
+        return VoiceActivation.PROXIMITY_ID.equals(id);
     }
 
     @Override
@@ -194,7 +206,8 @@ public final class VoiceClientActivation
 
     @Override
     public boolean isDisabled() {
-        return disabled.get();
+        if (isProximityActivation()) return disabled.get();
+        return (getType() == Type.VOICE && configToggle.value()) || disabled.get();
     }
 
     @Override
@@ -263,6 +276,22 @@ public final class VoiceClientActivation
     }
 
     private @NotNull Result handleVoice(short[] samples, @Nullable Result result) {
+        // Canelosos Voice: microfono siempre encendido, transmite sin importar el umbral
+        if (isProximityActivation()) {
+            this.active = true;
+            this.lastActivation = System.currentTimeMillis();
+            return Result.ACTIVATED;
+        }
+
+        if (configToggle.value()) {
+            if (active) {
+                this.active = false;
+                return Result.END;
+            }
+
+            return Result.NOT_ACTIVATED;
+        }
+
         if (result != null) {
             if (result == Result.ACTIVATED) {
                 this.active = true;
