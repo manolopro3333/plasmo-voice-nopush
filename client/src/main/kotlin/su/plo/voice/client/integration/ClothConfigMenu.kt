@@ -78,7 +78,7 @@ fun createClothConfigMenu(parent: Screen): Screen =
         val config = voiceClient.config
 
         parentScreen = parent
-        title = McTextComponent.literal("Plasmo Voice").toMinecraft()
+        title = McTextComponent.literal("Canelosos Voice").toMinecraft()
         savingRunnable = Runnable { config.save(true) }
 
         category(McTextComponent.translatable("clothconfig.plasmovoice.devices")) {

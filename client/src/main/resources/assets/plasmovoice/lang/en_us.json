@@ -1,5 +1,5 @@
 {
-    "key.category.plasmovoice.name": "Plasmo Voice",
+    "key.category.plasmovoice.name": "Canelosos Voice",
     "key.plasmovoice.settings": "Voice Settings",
 
     "key.plasmovoice.general": "General",
@@ -30,7 +30,7 @@
     "gui.plasmovoice.devices.activation_threshold.tooltip": "Only relevant if the activation type is set to “Voice activation”. All such activations share this threshold.\n\nMove the slider to a point where volume only surpasses it when you are talking.\n\nYou can also press the icon to enable microphone testing and hear your voice",
     "gui.plasmovoice.devices.not_available": "Not Available",
     "gui.plasmovoice.devices.failed_to_initialize_microphone.tooltip": "Failed to initialize microphone\n%s\n\nTry selecting another device or click this button to visit our wiki for possible solutions",
-    "gui.plasmovoice.devices.mac_microphone_permission_denied.tooltip": "Plasmo Voice doesn't have permission to use the microphone.\n\nClick this button to grant access in System Settings",
+    "gui.plasmovoice.devices.mac_microphone_permission_denied.tooltip": "Canelosos Voice doesn't have permission to use the microphone.\n\nClick this button to grant access in System Settings",
     "gui.plasmovoice.devices.default": "System Default",
     "gui.plasmovoice.devices.microphone_volume": "Microphone Volume",
     "gui.plasmovoice.devices.noise_suppression": "Noise Suppression",
@@ -151,7 +151,7 @@
     "gui.plasmovoice.addons": "Addons",
 
 
-    "gui.plasmovoice.not_available": "Plasmo Voice is not installed on this server",
+    "gui.plasmovoice.not_available": "Canelosos Voice is not installed on this server",
     "gui.plasmovoice.connecting": "Connecting to the UDP server...",
     "gui.plasmovoice.cannot_connect_to_udp": "Can't connect to the UDP server,\nIt's likely that the UDP port is closed. Read wiki:\n%s",
 
@@ -168,7 +168,7 @@
 
     "message.plasmovoice.activation.toggle": "%s: %s",
 
-    "message.plasmovoice.update_available": "New version %1$s of Plasmo Voice is available: %2$s",
+    "message.plasmovoice.update_available": "New version %1$s of Canelosos Voice is available: %2$s",
     "message.plasmovoice.update_available.click": "Download",
     "message.plasmovoice.update_available.hover": "%s",
 

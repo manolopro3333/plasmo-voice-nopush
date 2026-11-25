@@ -14,7 +14,7 @@ public final class ConfigClientActivation {
     @ConfigField(path = "type")
     private EnumConfigEntry<ClientActivation.Type> configType = new EnumConfigEntry<>(
             ClientActivation.Type.class,
-            ClientActivation.Type.PUSH_TO_TALK
+            ClientActivation.Type.VOICE
     );
 
     @ConfigField(path = "toggle")

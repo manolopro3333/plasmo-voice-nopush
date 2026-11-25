@@ -3,9 +3,9 @@ no_permissions = "&cI'm sorry, but you do not have permission to perform this co
 player_only_command = "Only player can execute this command"
 player_not_found = "Player not found"
 mod_missing_kick_message = """
-Sorry, you need to install the Plasmo Voice mod to play on this server.
+Sorry, you need to install the Canelosos Voice mod to play on this server.
 Download here: https://modrinth.com/plugin/plasmo-voice"""
-version_not_supported = "Sorry, your Plasmo Voice version is not supported on this server. %s"
+version_not_supported = "Sorry, your Canelosos Voice version is not supported on this server. %s"
 version_not_supported_click = "Download supported version"
 version_not_supported_hover = "%s"
 
@@ -45,7 +45,7 @@ expiration_time = "HH:mm:ss"
 
 [server.pv.command.list]
 message = "Clients (%1$s/%2$s): %3$s"
-empty = "no players with Plasmo Voice installed"
+empty = "no players with Canelosos Voice installed"
 
 [server.pv.command.reconnect]
 message = "Reconnect packet sent"

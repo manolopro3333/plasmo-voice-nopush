@@ -20,12 +20,6 @@ public final class HotkeyActions {
 
     public void register() {
         setHotkeyAction(
-                "key.plasmovoice.general.mute_microphone",
-                createConfigToggleAction(config.getVoice().getMicrophoneDisabled())
-        );
-        config.getVoice().getMicrophoneDisabled().addChangeListener((value) -> sendPlayerStatePacket());
-
-        setHotkeyAction(
                 "key.plasmovoice.general.disable_voice",
                 createConfigToggleAction(config.getVoice().getDisabled())
         );
@@ -71,7 +65,7 @@ public final class HotkeyActions {
                 .ifPresent((connection) ->
                         connection.sendPacket(new PlayerStatePacket(
                                 config.getVoice().getDisabled().value(),
-                                config.getVoice().getMicrophoneDisabled().value()
+                                false // Canelosos Voice: el microfono no se puede mutear
                         ))
                 );
     }

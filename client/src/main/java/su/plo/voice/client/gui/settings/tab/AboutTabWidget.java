@@ -78,18 +78,18 @@ public final class AboutTabWidget extends TabWidget {
     }
 
     private McTextComponent madeBy() {
-        McTextComponent madeBy = McTextComponent.translatable("gui.plasmovoice.about.made_by", "Plasmo Voice");
+        McTextComponent madeBy = McTextComponent.translatable("gui.plasmovoice.about.made_by", "Canelosos Voice");
         if (!LanguageUtil.getOrDefault("gui.plasmovoice.about.made_by").contains("%s")) {
-            madeBy = McTextComponent.literal("Plasmo Voice is made by");
+            madeBy = McTextComponent.literal("Canelosos Voice is made by");
         }
 
         return madeBy;
     }
 
     private McTextComponent links() {
-        McTextComponent links = McTextComponent.translatable("gui.plasmovoice.about.links", "Plasmo Voice");
+        McTextComponent links = McTextComponent.translatable("gui.plasmovoice.about.links", "Canelosos Voice");
         if (!LanguageUtil.getOrDefault("gui.plasmovoice.about.links").contains("%s")) {
-            links = McTextComponent.literal("Plasmo Voice on");
+            links = McTextComponent.literal("Canelosos Voice on");
         }
 
         return links;

@@ -98,6 +98,8 @@ public final class VoiceClientActivation
         this.configDistance = activationDistance;
         this.configType = activationConfig.getConfigType();
         this.configToggle = activationConfig.getConfigToggle();
+        if (configType.value() == Type.PUSH_TO_TALK) configType.set(Type.VOICE);
+        if (configToggle.value()) configToggle.set(false);
 
         this.pttKey = createHotKey(hotKeys, activation, "ptt", true);
         this.toggleKey = createHotKey(hotKeys, activation, "toggle", false);
@@ -134,7 +136,9 @@ public final class VoiceClientActivation
 
     @Override
     public @NotNull Type getType() {
-        return configType.value();
+        // Canelosos Voice: no existe Push-to-Talk, siempre activacion por voz
+        Type type = configType.value();
+        return type == Type.PUSH_TO_TALK ? Type.VOICE : type;
     }
 
     @Override
@@ -190,7 +194,7 @@ public final class VoiceClientActivation
 
     @Override
     public boolean isDisabled() {
-        return (getType() == Type.VOICE && configToggle.value()) || disabled.get();
+        return disabled.get();
     }
 
     @Override
@@ -259,15 +263,6 @@ public final class VoiceClientActivation
     }
 
     private @NotNull Result handleVoice(short[] samples, @Nullable Result result) {
-        if (configToggle.value()) {
-            if (active) {
-                this.active = false;
-                return Result.END;
-            }
-
-            return Result.NOT_ACTIVATED;
-        }
-
         if (result != null) {
             if (result == Result.ACTIVATED) {
                 this.active = true;
@@ -299,15 +294,6 @@ public final class VoiceClientActivation
     private @NotNull Result handleInherit(@Nullable Result result) {
         if (result == null) return Result.NOT_ACTIVATED;
 
-        if (configToggle.value()) {
-            if (active) {
-                this.active = false;
-                return Result.END;
-            }
-
-            return Result.NOT_ACTIVATED;
-        }
-
         this.active = result == Result.ACTIVATED;
         if (active) this.lastActivation = System.currentTimeMillis();
 
@@ -315,7 +301,8 @@ public final class VoiceClientActivation
     }
 
     private void onToggle(@NotNull Hotkey.Action action) {
-        if (action != Hotkey.Action.DOWN || getType() == Type.PUSH_TO_TALK) return;
+        // Canelosos Voice: no se puede apagar la activacion con tecla
+        if (true) return;
         configToggle.invert();
 
         ClientChatUtil.setActionBar(

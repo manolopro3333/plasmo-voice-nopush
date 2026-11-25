@@ -188,7 +188,6 @@ public final class VoiceAudioCapture implements AudioCapture {
                 ClientActivation parentActivation = activations.getParentActivation().get();
 
                 if (captureEvent.isFlushActivations()
-                        || config.getVoice().getMicrophoneDisabled().value()
                         || config.getVoice().getDisabled().value()
                         || isServerMuted()
                 ) {

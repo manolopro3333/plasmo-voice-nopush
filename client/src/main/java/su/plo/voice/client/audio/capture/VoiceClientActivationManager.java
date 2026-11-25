@@ -67,8 +67,8 @@ public final class VoiceClientActivationManager implements ClientActivationManag
             ConfigClientActivation activationConfig = config.getActivations().getOrCreateActivation(activation.getName());
 
             if (activationConfig.getConfigType().value() == ClientActivation.Type.INHERIT) {
-                BaseVoice.LOGGER.warn("Proximity activation type cannot be INHERIT. Changed to PUSH_TO_TALK");
-                activationConfig.getConfigType().set(ClientActivation.Type.PUSH_TO_TALK);
+                BaseVoice.LOGGER.warn("Proximity activation type cannot be INHERIT. Changed to VOICE");
+                activationConfig.getConfigType().set(ClientActivation.Type.VOICE);
             }
 
             removeFallbackParent();
@@ -220,8 +220,8 @@ public final class VoiceClientActivationManager implements ClientActivationManag
         ConfigClientActivation activationConfig = config.getActivations().getOrCreateActivation(serverActivation.getName());
         IntConfigEntry activationDistance = new IntConfigEntry(0, 0, 0);
         if (activationConfig.getConfigType().value() == ClientActivation.Type.INHERIT) {
-            BaseVoice.LOGGER.warn("Proximity activation type cannot be INHERIT. Changed to PUSH_TO_TALK");
-            activationConfig.getConfigType().set(ClientActivation.Type.PUSH_TO_TALK);
+            BaseVoice.LOGGER.warn("Proximity activation type cannot be INHERIT. Changed to VOICE");
+            activationConfig.getConfigType().set(ClientActivation.Type.VOICE);
         }
 
         return new VoiceClientActivation(

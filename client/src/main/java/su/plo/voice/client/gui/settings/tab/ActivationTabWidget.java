@@ -181,8 +181,7 @@ public final class ActivationTabWidget extends AbstractHotKeysTabWidget {
                 .orElseThrow(() -> new IllegalStateException("Activation distance config is empty"));
 
         CompositeColumnWidget category = addCategory(McTextComponent.translatable(activation.getTranslation()));
-        category.add(createActivationType(activation, activationConfig, canInherit));
-        category.add(createActivationButton((VoiceClientActivation) activation));
+        // Canelosos Voice: sin selector de Push-to-Talk ni tecla para apagar la activacion
         if (activation.getDistances().size() > 0) {
             category.add(createDistance(activation, activationDistance));
         }

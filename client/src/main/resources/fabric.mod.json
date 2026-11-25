@@ -1,8 +1,8 @@
 {
     "schemaVersion": 1,
     "id": "plasmovoice",
-    "version": "${version}",
-    "name": "Plasmo Voice",
+    "version": "1.0.0.0",
+    "name": "Canelosos Voice",
     "description": "A proximity voice chat mod with audio positioning and lots of features",
     "authors": [
         "Plasmo"

@@ -338,7 +338,7 @@ public final class ModServerConnection implements ServerConnection {
                 voiceClient.getVersion(),
                 keyPair.getPublic().getEncoded(),
                 voiceClient.getConfig().getVoice().getDisabled().value(),
-                voiceClient.getConfig().getVoice().getMicrophoneDisabled().value()
+                false // Canelosos Voice: el microfono no se puede mutear
         ), false);
     }
 

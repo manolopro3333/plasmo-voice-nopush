@@ -46,12 +46,6 @@ public final class ConfigHotkeys implements Hotkeys, SerializableConfigEntry {
 
         // general
         register(
-                "key.plasmovoice.general.mute_microphone",
-                ImmutableList.of(Hotkey.Type.KEYSYM.getOrCreate(InputConstants.KEY_M)),
-                "key.plasmovoice.general",
-                false
-        );
-        register(
                 "key.plasmovoice.general.disable_voice",
                 ImmutableList.of(),
                 "key.plasmovoice.general",
@@ -135,6 +129,8 @@ public final class ConfigHotkeys implements Hotkeys, SerializableConfigEntry {
                 Map<String, Object> configKeyMap = (Map<String, Object>) value;
 
                 String name = (String) configKeyMap.get("name");
+                // Canelosos Voice: la tecla de mutear microfono ya no existe
+                if ("key.plasmovoice.general.mute_microphone".equals(name)) return;
                 String category = (String) configKeyMap.get("category");
                 List<Object> configKeys = (List<Object>) configKeyMap.get("keys");
                 boolean anyContext = (Boolean) configKeyMap.get("any_context");

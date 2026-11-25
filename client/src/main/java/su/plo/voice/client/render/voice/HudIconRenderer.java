@@ -61,11 +61,6 @@ public final class HudIconRenderer implements HudRenderEvent.Callback {
             return;
         }
 
-        if (config.getVoice().getMicrophoneDisabled().value()) {
-            renderIcon(context, MICROPHONE_DISABLED_ICON);
-            return;
-        }
-
         List<ClientActivation> activations = (List<ClientActivation>) voiceClient.getActivationManager().getActivations();
 
         ClientActivation currentActivation = null;

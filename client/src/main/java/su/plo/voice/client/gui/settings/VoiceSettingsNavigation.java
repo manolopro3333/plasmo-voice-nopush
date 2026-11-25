@@ -156,7 +156,6 @@ public final class VoiceSettingsNavigation implements GuiWidgetListener {
                 true
         );
 
-        parent.addWidget(toggleMicrophoneButton);
         parent.addWidget(toggleVoiceButton);
 
         getActiveTab().ifPresent((widget) -> {
@@ -166,7 +165,6 @@ public final class VoiceSettingsNavigation implements GuiWidgetListener {
     }
 
     public void repositionElements() {
-        toggleMicrophoneButton.setX(parent.getWidth() - 52);
         toggleVoiceButton.setX(parent.getWidth() - 28);
 
         getActiveTab().ifPresent(TabWidget::repositionElements);
@@ -204,7 +202,6 @@ public final class VoiceSettingsNavigation implements GuiWidgetListener {
             button.render(context, mouseX, mouseY, delta);
         }
 
-        toggleMicrophoneButton.render(context, mouseX, mouseY, delta);
         toggleVoiceButton.render(context, mouseX, mouseY, delta);
     }
 

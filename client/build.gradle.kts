@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "$group.client"
-base.archivesName.set("plasmovoice-fabric-26.3")
+base.archivesName.set("canelososvoice-fabric-26.3")
 
 val minecraftVersion = "26.3"
 val fabricApiVersion = project.property("deps.fabric_api") as String
